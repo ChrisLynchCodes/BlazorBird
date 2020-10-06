@@ -1,0 +1,18 @@
+﻿
+
+<div class="pipe top" style="@_topPipeCss"></div>
+<div class="pipe" style="@_bottomPipeCss"></div>
+
+
+
+@code {
+
+    [Parameter] public Pipe Model { get; set; }
+
+
+    private string _bottomPipeCss => $"bottom: {Model.DistanceFromBottom}px; left:{Model.DistanceFromLeft}px";
+    //hardcoded 300 is pipe height in css. Lazy I know..
+    private string _topPipeCss => $"bottom: {Model.DistanceFromBottom + 300 + Model.Gap}px; left:{Model.DistanceFromLeft}px";
+
+
+}

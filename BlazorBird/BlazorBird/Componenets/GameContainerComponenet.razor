@@ -2,6 +2,48 @@
 
 
 @*This 'container' will hold the onscreen elements*@
-@code {
+
+
+<div class="border-left"></div>
+
+<div class="game-container" tabindex="0" @onclick="_gameManager.StartGame" @onkeyup="HandleKeyUp">
+    <div class="border-top"></div>
+
+    <div class="sky">
+        <BirdComponent Model="_gameManager.Bird"></BirdComponent>
+        
+        
+</div>
+    <div class="ground"></div>
+
+    @foreach (var pipe in _gameManager.Pipes)
+    {
+        <PipeComponent Model="pipe" />
+    }
+
+
+</div>
+<div class="border-right"></div>
+
+@code{
+    private GameManager _gameManager;
+
+
+
+    protected override void OnInitialized()
+    {
+        _gameManager = new GameManager();
+        _gameManager.MainLoopCompletion += (o, e) => StateHasChanged();
+
+    }
+
+    public void HandleKeyUp(KeyboardEventArgs e)
+    {
+        if (e.Key == " ")
+        {
+            _gameManager.Jump();
+        }
+    }
+
 
 }

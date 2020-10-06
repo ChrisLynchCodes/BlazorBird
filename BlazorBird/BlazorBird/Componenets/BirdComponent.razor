@@ -1,0 +1,13 @@
+﻿
+
+<div class="bird" style="@_birdCss">
+
+</div>
+@code {
+
+    [Parameter] public BlazorBird.Models.Bird Model { get; set; }
+
+    //converts the bird models bistance from ground int to a css string
+    private string _birdCss => $"bottom: {Model.DistanceFromGround}px";
+
+}
