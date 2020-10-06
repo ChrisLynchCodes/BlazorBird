@@ -25,7 +25,21 @@
 </div>
 <div class="border-right"></div>
 
+
+
+
+
 @code{
+    public void HandleKeyUp(KeyboardEventArgs e)
+    {
+        if (e.Key == " ")
+        {
+            _gameManager.Jump();
+        }
+    }
+
+
+    
     private GameManager _gameManager;
 
 
@@ -37,13 +51,7 @@
 
     }
 
-    public void HandleKeyUp(KeyboardEventArgs e)
-    {
-        if (e.Key == " ")
-        {
-            _gameManager.Jump();
-        }
-    }
+
 
 
 }

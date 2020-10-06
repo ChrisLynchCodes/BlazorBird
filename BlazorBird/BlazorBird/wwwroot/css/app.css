@@ -3,12 +3,13 @@
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     display: flex;
+
 }
 
 
 
 .game-container {
-    width: 1000px;
+    width: 500px;
     height: 730px;
     position: absolute;
     left: 80px;
@@ -23,7 +24,7 @@ html, body {
 }
 
 .border-right {
-    left: 1080px;
+    left: 580px;
     width: 80px;
     height: 790px;
     position: absolute;
@@ -32,7 +33,7 @@ html, body {
 }
 
 .border-top {
-    width: 1320px;
+    width: 660px;
     height: 60px;
     position: absolute;
     background-color: white;
@@ -43,7 +44,7 @@ html, body {
 
 .sky {
     background-image: url(../images/fb-game-background.png);
-    width: 1000px;
+    width: 500px;
     height: 580px;
 }
 
@@ -51,13 +52,13 @@ html, body {
     background-image: url(../images/flappy-bird.png);
     width: 60px;
     height: 45px;
-    left: 540px;
+    left: 220px;
     position: absolute;
 }
 
 .ground {
     background-image: url(../images/bottom-background.png);
-    width: 1000px;
+    width: 500px;
     height: 150px;
     position: absolute;
     top: 580px;

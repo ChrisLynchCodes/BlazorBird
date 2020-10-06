@@ -8,7 +8,7 @@ namespace BlazorBird.Models
     public class Pipe
     {
 
-        public int DistanceFromLeft { get; private set; } = 1000;
+        public int DistanceFromLeft { get; private set; } = 400;
         public int DistanceFromBottom { get; set; } = new Random().Next(0, 120);
         public bool OffScreen { get; set; }
         public int Speed { get; set; } = 2;
@@ -26,14 +26,16 @@ namespace BlazorBird.Models
             if (DistanceFromLeft == -60)
             {
                 OffScreen = true;
+                
             }
         }
+       
 
         public bool IsCentered()
         {
             //Game container & bird width / 2 
-            bool hasEnteredCenter = DistanceFromLeft <= (1000 / 2) + (60 / 2);
-            bool hasExitedCenter = DistanceFromLeft <= (1000 / 2) - (60 / 2) - 60; //pipe width
+            bool hasEnteredCenter = DistanceFromLeft <= (500 / 2) + (60 / 2);
+            bool hasExitedCenter = DistanceFromLeft <= (500 / 2) - (60 / 2) - 60; //pipe width
 
             return hasEnteredCenter && !hasExitedCenter;
         }
