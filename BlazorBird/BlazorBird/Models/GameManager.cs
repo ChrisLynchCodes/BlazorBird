@@ -74,9 +74,9 @@ namespace BlazorBird.Models
             //check for collision with bird 
             if (pipeInCollisonZone != null)
             {
-                //150 is the ground height. 45 is the bird height in css :(
+                //150 is the ground height. 60 is the bird height in css :(
                 bool hasCollidedWithBottomPipe = Bird.DistanceFromGround < pipeInCollisonZone.TopOfLowerPipe;
-                bool hasCollidedWithTopPipe = Bird.DistanceFromGround + 45 > pipeInCollisonZone.BottomOfTopPipe;
+                bool hasCollidedWithTopPipe = Bird.DistanceFromGround + 60 > pipeInCollisonZone.BottomOfTopPipe;
 
                 if (hasCollidedWithBottomPipe || hasCollidedWithTopPipe)
 

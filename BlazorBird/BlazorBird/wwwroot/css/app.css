@@ -49,9 +49,9 @@ html, body {
 }
 
 .bird {
-    background-image: url(../images/flappy-bird.png);
+    background-image: url(../images/blazor-bird.png);
     width: 60px;
-    height: 45px;
+    height: 60px;
     left: 220px;
     position: absolute;
 }
