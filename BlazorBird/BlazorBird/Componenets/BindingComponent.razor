@@ -1,0 +1,196 @@
+﻿<!-- #region html -->
+@*binds an <input> element to the currentValue field and an <input> element to the CurrentValue property*@
+<div>
+    <p>
+        <input @bind="currentValue" /> Binding to field : @currentValue
+    </p>
+
+    <p>
+        <input @bind="CurrentValue" /> Binding to property : @CurrentValue
+    </p>
+</div>
+
+
+
+<br />
+<br />
+<br />
+<br />
+
+@*=================One way / Two way binding==================*@
+
+<div>
+    <div>
+        <h3>One way data binding</h3>
+        <h4>Name - @person.Name</h4>
+        <br />
+        <br />
+    </div>
+
+    <div>
+        <h3>Two way data binding</h3>
+        <h4>Age - @person.Age</h4>
+        <br />
+        <br />
+        <input type="number" @bind-value="person.Age" @bind-value:event="oninput" />
+    </div>
+</div>
+
+
+<br />
+<br />
+<br />
+
+@*=================Checkbox==================*@
+<div>
+    <input type="checkbox" @bind-value="person.HasPhone" @bind-value:event="oninput" />
+    Checkbox = @person.HasPhone;
+</div>
+<br />
+<br />
+
+@*=================Radio==================*@
+<div>
+    <label>
+        1
+        <input type="radio"
+               value="1"
+               name="group"
+               checked="@(selectedGroup == 1)"
+               @onclick="@(()=>selectedGroup = 1)" />
+    </label>
+    <label>
+        2
+        <input type="radio"
+               value="2"
+               name="group"
+               checked="@(selectedGroup == 2)"
+               @onclick="@(()=>selectedGroup = 2)" />
+    </label>
+
+    <br />
+    Selected group = @selectedGroup
+
+</div>
+<br />
+<br />
+
+
+@*=================DropDown==================*@
+
+<div>
+    <select @bind="selectedHobbyId">
+        <option value="0"></option>
+        @foreach (var hobby in person.Hobbies)
+        {
+            <option value="@hobby.Id">@hobby.HobbyName</option>
+        }
+    </select>
+    selected Hobby Id = @selectedHobbyId
+    <br />
+    <br />
+</div>
+
+@*=================List==================*@
+<div>
+    <ul>
+        @foreach (var hobby in person.Hobbies)
+        {
+            <li>@hobby.HobbyName</li>
+        }
+    </ul>
+</div>
+
+@*=================Table==================*@
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">
+                    ID
+                </th>
+                <th scope="col">
+                    Name
+                </th>
+            </tr>
+        </thead>
+        @foreach(var hobby in person.Hobbies)
+        {
+        <tr>
+            <td>@hobby.Id</td>
+            <td><input type="text" @bind-value="@hobby.HobbyName" /></td>
+        
+           
+        </tr>
+        }
+    </table>
+
+</div>
+<!-- #endregion -->
+<!-- #region C# -->
+
+
+@code {
+
+    private string currentValue;
+    private int selectedGroup = 0;
+    private int selectedHobbyId = 0;
+
+    private string CurrentValue { get; set; }
+
+
+
+
+
+
+    PersonViewModel person = null;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        person = new PersonViewModel
+        {
+            Age = 32,
+            Name = "Chris",
+            HasPhone = false,
+            Hobbies = new List<Hobby>()
+{
+                  new Hobby
+                  {
+                      Id = 1,
+                      HobbyName = "Martial Arts"
+                  },
+                  new Hobby
+                  {
+                      Id = 2,
+                      HobbyName = "Science"
+                  },
+                  new Hobby
+                  {
+                      Id = 3,
+                      HobbyName = "Nature"
+                  }
+        }
+
+        };
+    }
+
+    class PersonViewModel
+    {
+        //2 way binding on age
+        public int Age { get; set; }
+        //1 way binding on Name
+        public string Name { get; set; }
+        public bool HasPhone { get; set; }
+        public List<Hobby> Hobbies { get; set; }
+
+    }
+    class Hobby
+    {
+        public int Id { get; set; }
+        public string HobbyName { get; set; }
+    }
+
+}
+<!-- #endregion -->
